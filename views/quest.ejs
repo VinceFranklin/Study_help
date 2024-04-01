@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <style>
+        /* .asked{
+            display: flex;
+        } */
+        body{
+            /* width:50%; */
+            /* text-align: center; */
+            display: flex;
+            flex-direction: column;
+            /* margin-left: 25%; */
+            /* background-color: #222831; */
+            /* margin-right: 50%; */
+            /* gap: 10px; */
+            /* border-radius: 20px; */
+        }
+        .question{
+            width: 50%;
+            /* display: flex; */
+            background-color: #76ABAE;
+            font-size: 30px;
+            border-radius: 3px;
+            /* align-items:flex-start; */
+            padding: 7px;
+            margin-left: 0px;
+            align-items: center;
+            margin-right: 50%;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+        .answer{
+            max-width:50%;
+            /* display: flex; */
+            margin-right: 0px;
+            background-color: #EEEEEE;
+            font-size: 30px;
+            border-radius:3px;
+            /* align-self: flex-end; */
+            padding: 7px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            margin-left: 50%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+        .title{
+            justify-content: center;
+            text-align: center;
+            color:#222831;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .asked{
+            align-items: center;
+            text-align: center;
+            overflow:scroll;
+        }
+        .fill{
+            text-align: center;
+            margin-top: 20px;
+            /* margin-bottom:50px; */
+            background-color: #7F9F80;
+            position: fixed;
+            overflow: hidden;
+            bottom:0;
+            width: 100%;
+        }
+        .filler{
+            height:20px;
+        }
+        .inp{
+            width:75%;
+            height:35px;
+            border-radius: 8px;
+        }
+        .name{
+            font-size: 25px;
+            /* color: #EEEEEE; */
+        }
+        .broski{
+            border-radius: 8px;
+            width:100px;
+        }
+        .box{
+            background-color: #222831;
+            /* border-radius:2%; */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="title">Question and answer</h1>
+    </div>
+    <div class="box">
+        
+            <div class="asked">
+                <% (locals.result).forEach((item) =>{ %>
+                    <div class="question"><%= item.quest %></div>
+                    <div class="answer"><%= item.ans %></div> 
+                <% }) %>
+            </div>
+            <div class="filler">
+
+            </div>
+            <div class="fill">
+                <form class="bro" method="post" action="/quest/<%= locals.fileName %>">
+                    <!-- <label class="name">Question</label> -->
+                    <input type="text" name="quest" class="inp" placeholder="Ask your Question" required>
+                    <button type="submit" class="broski">Go</button>   
+                </form>
+            </div>
+        
+    </div>
+    <script>
+        const obj = document.querySelector('.asked');
+        obj.scrollTop = obj.scrollHeight;
+        // document.querySelector("h1").innerHTML = "Pia";
+        document.querySelector(".bro").addEventListener("submit",(e)=>{
+            e.preventDefault();
+        })
+        // document.querySelector(".bro").addEventListener("submit" , function(e){
+        //     e.preventDefault();
+        //     console.log("Hello")
+        //     const content = document.querySelector(".quest").value;
+        //     console.log(content);
+        //     const newDiv=document.createElement('div');
+        //     newDiv.innerHTML = content;
+        //     document.querySelector(".asked").appendChild(newDiv);
+        //     const ansDiv = document.createElement('div');
+        //     ansDiv.innerHTML = "Yes";
+        //     document.querySelector(".asked").appendChild(ansDiv);
+
+        //     document.querySelector(".quest").value = "";
+        // })
+    </script>
+</body>
+</html>
